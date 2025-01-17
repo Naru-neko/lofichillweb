@@ -5,7 +5,7 @@ const volumeBar = document.getElementById('volumeBar');
 
 const img = document.getElementById('albumArt');
 
-var playState = true;
+var playState = false;
 
 var setWinState = false;
 
@@ -13,9 +13,15 @@ setInterval(refreshDisplay, 100);
 
 window.onload = function() {
     audioPlayer.volume = document.getElementById('volumeSlider').value / 3;
-    audioPlayer.play();
-
     img.src = 'images/Scene-Ver.2.png';
+
+    document.getElementById('work-hour').value = workHour;
+    document.getElementById('work-minute').value = workMinute;
+    document.getElementById('work-second').value = workSecond;
+
+    document.getElementById('rest-hour').value = restHour;
+    document.getElementById('rest-minute').value = restMinute;
+    document.getElementById('rest-second').value = restSecond;
 }
 
 document.getElementById('volumeSlider').addEventListener('input', function() {
@@ -60,6 +66,11 @@ document.getElementById('fs-button').addEventListener('click', function() {
 
 function refreshDisplay() {
     volumeText.textContent = Math.round(audioPlayer.volume * 100 * 3) + '%';
+    if (audioPlayer.paused) {
+        document.getElementById('play-icon').src = 'images/play-button.svg';
+    } else {
+        document.getElementById('play-icon').src = 'images/pause.svg';
+    }
 }
 
 function showWindow() {

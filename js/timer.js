@@ -5,12 +5,12 @@ var workState = true;
 var restState = false;
 
 var workHour = 0;
-var workMinute = 0;
-var workSecond = 5;
+var workMinute = 50;
+var workSecond = 0;
 
 var restHour = 0;
-var restMinute = 0;
-var restSecond = 3;
+var restMinute = 10;
+var restSecond = 0;
 
 var hour = 0;
 var minute = 0;
