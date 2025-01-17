@@ -96,10 +96,11 @@ function changeBGM(fname) {
 
             var audioTitle = document.getElementById('audioTitle');
             audioTitle.textContent = fname;
-            audioTitle.style.fontSize = (60 / fname.length) + 'vw';
 
-            if (audioTitle.style.fontSize > '2.7vw') {
-                audioTitle.style.fontSize = '2.7vw';
+            if ((60 / fname.length) > 2.6) {
+                audioTitle.style.fontSize = '2.6vw';
+            } else {
+                audioTitle.style.fontSize = (60 / fname.length) + 'vw';
             }
         });
 }
