@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>lofichill</title>
+</head>
+<body>
+
+    <div class="other-info">
+        <div id="date"><p></p></div>
+        <div id="time">
+            <p id="hour"></p>
+            <p class="colon">:</p>
+            <p id="minute"></p>
+            <p class="colon">:</p>
+            <p id="second"></p>
+        </div>
+    </div>
+
+
+    <div class="controller">
+        <div class="volume-display">
+            <p id="volumeTitle">vol</p>
+            <p id="volumeText">0%</p>
+            <input type="range" min="0" max="1" step="0.01" value="0.1" id="volumeSlider">
+        </div>
+        <span onclick="doPlay()"><img src="images/pause.svg" alt="" id="play-icon"></span>
+    </div>
+
+
+    <div class="music-info">
+
+        <div class="deck">
+            <img src="" alt="" id="albumArt">
+        </div>
+
+        <div class="text-info">
+            <div class="info-lower">
+                <div id="at-wrp"><p id="audioTitle">Scene Ver.2</p></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="upper-buttons">
+        <button id="bgm-button">
+            <img src="images/music.svg" alt="">
+        </button>
+        <button id="bg-button">
+            <img src="images/wallpaper.svg" alt="">
+        </button>
+        <button id="fs-button">
+            <img src="images/fullscreen.svg" alt="">
+        </button>
+        <button id="timer-button">
+            <img src="images/clock.svg" id="timer-img" alt="">
+        </button>
+    </div>
+
+    <div id="timer-setting-window">
+        <img src="images/close.svg" alt="" id="timer-setting-close">
+        <p id="timer-setting-title">Timer Setting</p>
+        <div class="timer-setting">
+            <p class="timer-category">work</p>
+            <div class="timer-setting-time">
+                <input type="number" id="work-hour" value="0" min="0" max="23" onchange="checkNum();">
+                <p class="colon">:</p>
+                <input type="number" id="work-minute" value="0" min="0" max="59" onchange="checkNum();">
+                <p class="colon">:</p>
+                <input type="number" id="work-second" value="5" min="0" max="59" onchange="checkNum();">
+            </div>
+        </div>
+        <div class="timer-setting">
+            <p class="timer-category">Interval</p>
+            <div class="timer-setting-time">
+                <input type="number" id="rest-hour" value="0" min="0" max="23" onchange="checkNum();">
+                <p class="colon">:</p>
+                <input type="number" id="rest-minute" value="0" min="0" max="59" onchange="checkNum();">
+                <p class="colon">:</p>
+                <input type="number" id="rest-second" value="3" min="0" max="59" onchange="checkNum();">
+            </div>
+        </div>
+    </div>
+
+    <div id="timer-display">
+        <p id="timer-category">Work</p>
+        <img src="images/setting.svg" alt="" id="timer-setting-button">
+        <p id="timer-time"></p>
+        <div id="timer-buttons">
+            <button id="timer-start" onclick="doTimer()">start</button>
+            <button id="timer-reset" onclick="resetTimer()">reset</button>
+        </div>
+    </div>
+
+    <div id="center-window">
+        <div id="bg-settings">
+            <img src="images/bg/cat.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/desk.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/girl2.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/girl3.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/lofigirl.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/room.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/girl4.gif" alt="" onclick="changeBG(this)">
+            <img src="images/bg/lofi.gif" alt="" onclick="changeBG(this)">
+        </div>
+        <div id="bgm-settings">
+            <p class="settings-title">BGM List</p>
+            <div class="bgm-list">
+                <p onclick="changeBGM('2_23_AM')">2:23AM</p>
+                <p onclick="changeBGM('Scene-Ver.2')">Scene Ver.2</p>
+                <p onclick="changeBGM('ensolarado')">ensolarado</p>
+                <p onclick="changeBGM('You_and_Me')">You_and_Me</p>
+                <p onclick="changeBGM('ローファイ少女は今日も寝不足')">ローファイ少女は今日も寝不足</p>
+                <p onclick="changeBGM('曇った宝石')">曇った宝石</p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" src="bgm/Scene-Ver.2.mp3" loop autoplay></audio>
+    <audio id="alarm" src="se/alarm.mp3"></audio>
+
+
+    <button id="test-button" onclick="doTest();">TEST</button>
+
+    <script src="js/jsmediatags.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/datetime.js"></script>
+    <script src="js/hidecursor.js"></script>
+    <script src="js/timer.js"></script>
+
+    <script type="text/javascript">
+        function doTest() {
+            return false;
+        }
+    </script>
+
+</body>
+</html>
