@@ -34,12 +34,6 @@ document.getElementById('bgm-button').addEventListener('click', function() {
     document.getElementById('bg-settings').style.display = 'none';
 });
 
-document.getElementById('bg-button').addEventListener('click', function() {
-    showWindow();
-    document.getElementById('bg-settings').style.display = 'block';
-    document.getElementById('bgm-settings').style.display = 'none';
-});
-
 document.getElementById('fs-button').addEventListener('click', function() {
     if( document.fullscreenElement || document.mozFullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement ) {
         if( document.exitFullscreen ) {
@@ -114,10 +108,6 @@ function changeBGM(fname) {
                 audioTitle.style.fontSize = (60 / fname.length) + 'vw';
             }
         });
-}
-
-function changeBG(event) {
-    document.querySelector('body').style.backgroundImage = 'url(' + event.src + ')';
 }
 
 function loadSmb(file) {
