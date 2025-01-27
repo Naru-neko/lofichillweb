@@ -49,7 +49,8 @@ body {
     width: 100%;
     height: 100%;
     background-image: url(../images/cofebg.png);
-    backdrop-filter: blur(10px);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #bg-image {
@@ -82,7 +83,7 @@ body {
 
 #date p {
     margin: 0;
-    font-size: 1.6vw;
+    font-size: 2.3vw;
 }
 
 #time {
@@ -95,7 +96,7 @@ body {
 #hour, #minute, #second {
     margin: 0;
     font-family: "dsdigi";
-    font-size: 6vw;
+    font-size: 7.2vw;
     position: relative;
     z-index: 2;
     padding-left: 1%;
@@ -297,7 +298,7 @@ body {
 }
 
 .upper-buttons button {
-    width: 10vh;
+    width: 12vh;
     border: none;
     margin-left: 1.8vw;
     background-color: transparent;
