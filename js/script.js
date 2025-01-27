@@ -9,6 +9,8 @@ var playState = false;
 
 var setWinState = false;
 
+var currentVol = audioPlayer.volume;
+
 setInterval(refreshDisplay, 100);
 
 window.onload = function() {
@@ -23,6 +25,19 @@ window.onload = function() {
     document.getElementById('rest-minute').value = restMinute;
     document.getElementById('rest-second').value = restSecond;
 }
+
+document.addEventListener('keydown', event => {
+    if (event.code === 'Space') {
+        doPlay();
+    } else if (event.code === 'KeyM') {
+        if (audioPlayer.volume == 0) {
+            audioPlayer.volume = currentVol;
+        } else {
+            currentVol = audioPlayer.volume;
+            audioPlayer.volume = 0;
+        }
+    }
+});
 
 document.getElementById('volumeSlider').addEventListener('input', function() {
     audioPlayer.volume = this.value / 3;
