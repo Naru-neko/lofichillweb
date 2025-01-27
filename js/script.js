@@ -3,19 +3,22 @@ const audioPlayer = document.getElementById('audioPlayer');
 const volumeText = document.getElementById('volumeText');
 const volumeBar = document.getElementById('volumeBar');
 
-const img = document.getElementById('albumArt');
+const albumArt = document.getElementById('albumArt');
 
 var playState = false;
 
 var setWinState = false;
+
+var volumeSlider = document.getElementById('volumeSlider');
 
 var currentVol = audioPlayer.volume;
 
 setInterval(refreshDisplay, 100);
 
 window.onload = function() {
-    audioPlayer.volume = document.getElementById('volumeSlider').value / 3;
-    img.src = 'images/Scene-Ver.2.png';
+    audioPlayer.volume = volumeSlider.value / 300;
+    albumArt.src = 'images/Scene-Ver.2.png';
+    document.getElementById('audioTitle').textContent = 'Scene-Ver.2';
 
     document.getElementById('work-hour').value = workHour;
     document.getElementById('work-minute').value = workMinute;
@@ -29,18 +32,26 @@ window.onload = function() {
 document.addEventListener('keydown', event => {
     if (event.code === 'Space') {
         doPlay();
-    } else if (event.code === 'KeyM') {
-        if (audioPlayer.volume == 0) {
-            audioPlayer.volume = currentVol;
+    } else if (event.code === 'ArrowUp') {
+        if (volumeSlider.value < 100) {
+            volumeSlider.value = parseInt(volumeSlider.value) + 1;
         } else {
-            currentVol = audioPlayer.volume;
-            audioPlayer.volume = 0;
+            volumeSlider.value = 100;
         }
+        audioPlayer.volume = volumeSlider.value / 300;
+    } else if (event.code === 'ArrowDown') {
+        if (volumeSlider.value > 0) {
+            volumeSlider.value = parseInt(volumeSlider.value) - 1;
+        } else {
+            volumeSlider.value = 0;
+        }
+        audioPlayer.volume = volumeSlider.value / 300;
     }
+    console.log(volumeSlider.value);
 });
 
-document.getElementById('volumeSlider').addEventListener('input', function() {
-    audioPlayer.volume = this.value / 3;
+volumeSlider.addEventListener('input', function() {
+    audioPlayer.volume = this.value / 300;
 });
 
 document.getElementById('bgm-button').addEventListener('click', function() {
@@ -131,10 +142,10 @@ function loadSmb(file) {
             const picture = tag.tags.picture;
             if (picture) {
                 const base64String = `data:${picture.format};base64,${arrayBufferToBase64(picture.data)}`;
-                img.src = base64String;
-                img.style.display = 'block';
+                albumArt.src = base64String;
+                albumArt.style.display = 'block';
             } else {
-                img.src = 'images/smb.jpg';
+                albumArt.src = 'images/smb.jpg';
                 console.log("ジャケット画像が見つかりませんでした");
             }
         },
